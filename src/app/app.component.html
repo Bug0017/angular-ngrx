@@ -1,3 +1,16 @@
 <ngrx-counter></ngrx-counter>
+<h2>Books</h2>
+<ngrx-book-list
+  class="book-list"
+  [books]="books$ | async"
+  (add)="onAdd($event)"
+></ngrx-book-list>
 
+<h2>My Collection</h2>
+<ngrx-book-collection
+  class="book-collection"
+  [books]="bookCollection$ | async"
+  (remove)="onRemove($event)"
+>
+</ngrx-book-collection>
 <router-outlet></router-outlet>

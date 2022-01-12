@@ -1,10 +1,12 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as ScoreBoardPageActions from './scoreboard-page.actions';
 
 export interface State {
   home: number;
   away: number;
 }
+
+export interface Game extends State {}
 
 export const initialState: State = {
   home: 0,
