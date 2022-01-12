@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { selectBookCollection, selectBooks } from './state/books.selectors';
-import { retrievedBookList, addBook, removeBook } from './state/books.actions';
-import { BooksService } from './book-list/books.service';
+import { addBook, removeBook, loadBooks } from './state/books.actions';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +20,9 @@ export class AppComponent {
     this.store.dispatch(removeBook({ bookId }));
   }
 
-  constructor(private booksService: BooksService, private store: Store) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
-    this.booksService
-      .getBooks()
-      .subscribe((books) => this.store.dispatch(retrievedBookList({ books })));
+    this.store.dispatch(loadBooks());
   }
 }
